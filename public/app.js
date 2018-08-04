@@ -199,7 +199,7 @@ document.getElementById('add-link').addEventListener('click', function(e){
   document.getElementById('custom-tag').value = '';
   document.getElementById('notes').value = '';
   document.getElementById('tag-checkboxes').innerHTML = '';
-  let tagArr = ['color', 'font', 'images', 'layout'];
+  let tagArr = ['images', 'layout', 'typography'];
   for (let i = 0; i < uniqueTags.length; i++) {
     tagArr.push.apply(tagArr, [uniqueTags[i]]);
   }
