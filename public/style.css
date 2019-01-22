@@ -262,31 +262,6 @@ input::placeholder {
   border-bottom: 2px dashed;
 }
 
-.cursor {
-  position: relative;
-}
-.cursor i {
-  position: absolute;
-  width: 2px;
-  height: 75%;
-  background-color: black;
-  left: 5px;
-  top: 10%;
-  animation-name: blink;
-  animation-duration: 800ms;
-  animation-iteration-count: infinite;
-  opacity: 1;
-}
-
-.cursor input:focus + i {
-  display: none;
-}
-
-@keyframes blink {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
 #loader {
   position: fixed;
   z-index: 999;
