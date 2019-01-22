@@ -2,17 +2,13 @@
 
 require('dotenv').load();
 
-const bodyParser = require('body-parser');
 const cloudinary = require('cloudinary');
 const express = require('express');
-const fs = require('fs');
-const mongoose = require('mongoose');
 const nodeMetaInspector = require('node-metainspector');
 const passport = require('passport');
 const urlExists = require('url-exists');
 const webshot = require('webshot');
 
-const config = require('../config');
 const router = express.Router();
 
 const { Website } = require('./models');
@@ -35,6 +31,7 @@ router.get('/:username', jwtAuth, (req, res) => {
 // POST a new webiste
 router.post('/', jwtAuth, (req, res) => {
   // Check for required fields
+  console.log("Checking URL");
   const requiredFields = ['url'];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -46,18 +43,22 @@ router.post('/', jwtAuth, (req, res) => {
   };
   
   // Check that URL is valid
+  console.log("Checking URL 2");
   urlExists(req.body.url, function(err, exists) {
+    console.log(req.body.url);
     console.log(exists);
     let newWebsite;
     if (exists) {
 
       // Get URL title
+      console.log("Getting URL title");
       let client = new nodeMetaInspector(req.body.url, { timeout: 5000 });
       client.on('fetch', function() {
         req.body.title = client.title;
         console.log('DB title: ' + req.body.title);
 
         // Get screenshot, save to cloud, POST new website
+        console.log("Getting screenshot");
         webshot(req.body.url, 'fullsize.png', function(err) {
           newWebsite = new Website(req.body);
           cloudinary.v2.uploader.upload('fullsize.png', {public_id: `${newWebsite._id}`},
