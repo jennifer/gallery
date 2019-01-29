@@ -1,4 +1,4 @@
-a, body, button, div, fieldset, footer, form, h1, h2, header, html, img, input, label, legend, li, main, p, section, ul {
+a, body, button, div, fieldset, footer, form, h1, h2, header, html, img, input, label, legend, li, main, p, section, textarea, ul {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -260,6 +260,11 @@ input::placeholder {
   font-size: 18px;
   padding-left: 10px;
   border-bottom: 2px dashed;
+}
+
+.text-area {
+  height: 50px;
+  resize: vertical;
 }
 
 #loader {
