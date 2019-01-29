@@ -302,7 +302,7 @@ function renderWebsiteEditor(i) {
           </div>
           <label for='edit-notes' class='label-margin'>Edit notes:</label>
           <div class="cursor">
-            <input type='text' id='edit-notes' class='text-input' name='notes' placeholder='${allWebsites[i].notes}' />
+            <textarea id='edit-notes' class='text-input text-area' name='notes'>${allWebsites[i].notes}</textarea>
             <i></i>
           </div>
         </div>
